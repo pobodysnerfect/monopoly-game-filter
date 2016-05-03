@@ -17,8 +17,9 @@ Install all packages
 
     npm install
     
-Start the node server:
+Build the application and start the server:
 
+    grunt build
     npm start
     
 
