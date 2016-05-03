@@ -139,9 +139,6 @@ function registerEventHandlers(elements) {
             elements.$modalCode
                 .text(rowData[0]);
 
-        })
-        .on('hidden.bs.modal', function (e) {
-            console.dir(e);
         });
 
     elements.$claimButton
