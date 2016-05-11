@@ -1,11 +1,11 @@
 let $ = require('jquery'),
-    PrizeDataTable = require("./prize-data-table"),
-    elements = require('elements');
+    PrizeDataTable = require('./prize-data-table'),
+    elements = require('./elements');
 
 
 /**
  * This class attaches events to the dom and provides the main business logic used
- * on this page functionality. It also stores the current state of the winners.
+ * on this page. It also stores the current state of the winners.
  */
 class Main {
 
@@ -32,8 +32,8 @@ class Main {
     }
 
     _applyDataTableCorrection() {
-        this.ui.$codeTableWrapper.addClass("table-responsive");
-        this.ui.$codeTableFooter.addClass("panel-footer");
+        this.ui.$codeTableWrapper.addClass('table-responsive');
+        this.ui.$codeTableFooter.addClass('panel-footer');
     }
 
     _onEvaluateFilter() {

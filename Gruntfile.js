@@ -15,15 +15,15 @@ module.exports = function (grunt) {
                 dest: 'public/dist/<%= pkg.name %>.css'
             }
         },
+        clean: ['./public/dist'],
         webpack: {
-            build: {},
-            options: {
+            vanilla: {
                 entry: [
-                    "./public/js/index.js"
+                    "./public/js/vanilla/index.js"
                 ],
                 output: {
                     path: "./public/dist",
-                    filename: "<%= pkg.name %>.js"
+                    filename: "vanilla-<%= pkg.name %>.js"
                 },
                 module: {
                     loaders: [
@@ -32,7 +32,7 @@ module.exports = function (grunt) {
                             exclude: /(node_modules|bower_components)/,
                             loader: 'babel-loader',
                             query: {
-                                presets: ['babel-preset-es2015'],
+                                presets: ['es2015'],
                                 plugins: [
                                     ['transform-es2015-classes', {loose: true}]
                                 ]
@@ -45,14 +45,43 @@ module.exports = function (grunt) {
                     modulesDirectories: ['node_modules'],
                     extensions: ['', '.js', '.jsx']
                 }
+            },
+
+            react: {
+                entry: [
+                    "./public/js/react/index.jsx"
+                ],
+                output: {
+                    path: "./public/dist",
+                    filename: "react-<%= pkg.name %>.js"
+                },
+                module: {
+                    loaders: [
+                        {
+                            test: /\.jsx?$/,
+                            exclude: /(node_modules|bower_components)/,
+                            loader: 'babel-loader',
+                            query: {
+                                presets: ['es2015', 'react']
+                            }
+                        }
+                    ]
+                },
+                resolve: {
+                    root: './public/js',
+                    modulesDirectories: ['node_modules'],
+                    extensions: ['', '.js', '.jsx']
+                }
             }
+
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-webpack');
-    grunt.registerTask('build', ['concat', 'webpack:build']);
+    grunt.registerTask('build', ['clean', 'concat', 'webpack']);
     grunt.registerTask('default', ['build', 'watch']);
 
 };

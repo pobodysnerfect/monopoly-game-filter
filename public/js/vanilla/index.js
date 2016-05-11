@@ -7,10 +7,10 @@ let $ = require('jquery');
 
 window.$ = $;
 window.jQuery = $;
-require("bootstrap");
-require("datatables.net");
+require('bootstrap');
+require('datatables.net');
 
-let Main = require('main');
+let Main = require('./main');
 
 function eventAttachHandler() {
     let main = new Main();

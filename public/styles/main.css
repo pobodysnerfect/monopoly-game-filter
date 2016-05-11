@@ -15,6 +15,11 @@
     color: white;
 }
 
+/** Bootstrap overrides */
 .table {
     width: 100% !important;
+}
+
+.navbar {
+    margin-bottom: 0px !important;
 }
